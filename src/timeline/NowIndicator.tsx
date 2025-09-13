@@ -7,12 +7,16 @@ export interface NowIndicatorProps {
   styles: {[key: string]: ViewStyle | TextStyle};
   width: number;
   left: number;
+  startOffset: number;
 }
 
 const NowIndicator = (props: NowIndicatorProps) => {
-  const {styles, width, left} = props;
+  const {styles, width, left, startOffset} = props;
 
-  const indicatorPosition = calcTimeOffset(HOUR_BLOCK_HEIGHT);
+  const indicatorPosition =
+    calcTimeOffset(HOUR_BLOCK_HEIGHT) -
+    calcTimeOffset(HOUR_BLOCK_HEIGHT, startOffset) +
+    calcTimeOffset(HOUR_BLOCK_HEIGHT, 0, new Date().getMinutes());
 
   const nowIndicatorStyle = useMemo(() => {
     return [styles.nowIndicator, {top: indicatorPosition, left}];
@@ -20,8 +24,8 @@ const NowIndicator = (props: NowIndicatorProps) => {
 
   return (
     <View style={nowIndicatorStyle}>
-      <View style={[styles.nowIndicatorLine, {width}]}/>
-      <View style={styles.nowIndicatorKnob}/>
+      <View style={[styles.nowIndicatorLine, {width}]} />
+      <View style={styles.nowIndicatorKnob} />
     </View>
   );
 };

@@ -78,7 +78,7 @@ const TimelineHours = (props: TimelineHoursProps) => {
     event => {
       const yPosition = event.nativeEvent.locationY;
       const xPosition = event.nativeEvent.locationX;
-      const {hour, minutes} = calcTimeByPosition(yPosition, HOUR_BLOCK_HEIGHT);
+      const {hour, minutes} = calcTimeByPosition(yPosition, HOUR_BLOCK_HEIGHT, start);
       const dateByPosition = calcDateByPosition(xPosition, timelineLeftInset, numberOfDays, date);
       lastLongPressEventTime.current = {hour, minutes, date: dateByPosition};
 

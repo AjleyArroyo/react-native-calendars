@@ -64,6 +64,11 @@ yarn-error.log
 **/fastlane/screenshots
 **/fastlane/test_output
 
+# Delete generate files .js and d.ts for build
+**/*.js
+**/*.js.map
+**/*.d.ts
+
 # Ruby / CocoaPods
 ios/Pods
 ios/Podfile.lock

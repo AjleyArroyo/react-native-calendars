@@ -2,11 +2,11 @@ import XDate from 'xdate';
 import constants from '../../commons/constants';
 import {generateDay} from '../../dateutils';
 
-export function calcTimeByPosition(yPosition: number, hourBlockHeight: number) {
+export function calcTimeByPosition(yPosition: number, hourBlockHeight: number, start: number = 0) {
   let time = yPosition / hourBlockHeight;
   time = Math.floor(time * 2) / 2;
 
-  const hour = Math.floor(time);
+  const hour = Math.floor(time)+start;
   const minutes = (time - Math.floor(time)) * 60;
   return {hour, minutes};
 }
